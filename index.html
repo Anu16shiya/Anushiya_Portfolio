@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anushiya | UI/UX Designer</title>
+  <style>
+  
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: #fdfbfb;
+      color: #333;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 10%;
+      position: relative;
+      z-index: 10;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #ff4eb5;
+      user-select: none;
+    }
+    .logo-bubble {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #ffb3ec, #ff4eb5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(255, 78, 181, 0.4);
+      animation: float 6s ease-in-out infinite;
+      flex-shrink: 0;
+      cursor: default;
+    }
+    .logo-bubble img {
+      width: 70%;
+      height: auto;
+      user-select: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+    nav ul li a {
+      font-weight: 500;
+      color: #444;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #ff4eb5;
+    }
+
+    .btn {
+      background: #ff4eb5;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: all 0.4s ease;
+    }
+    .btn:hover {
+      background: #c430d7;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #fff1f9, #ffe6f0);
+      padding: 80px 10% 120px;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      text-align: center;
+    }
+
+    /* Flex container for hero content */
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;  /* space between avatar and content */
+      max-width: 900px;
+      margin: 0 auto;
+      padding-top: 40px;
+      flex-wrap: wrap;
+      text-align: left;
+    }
+
+    .hero-avatar img {
+      width: 220px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-text {
+      max-width: 450px;
+    }
+
+    .hero-text h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    .hero-text h2 span {
+      color: #c430d7;
+    }
+    .hero-text p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      color: #444;
+    }
+
+    .colorful {
+      background: linear-gradient(45deg, #ff4eb5, #c430d7);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: 700;
+      display: inline-block;
+      transition: background 0.4s;
+    }
+    .colorful:hover {
+      background: linear-gradient(45deg, #c430d7, #ff4eb5);
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.5;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle at 30% 30%, #ffb3ec, #ff4eb5);
+      right: 10%;
+      top: 20%;
+      animation: moveAround 12s ease-in-out infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .section {
+      padding: 80px 10%;
+      text-align: center;
+      color: #444;
+    }
+    .section h2 {
+      font-size: 36px;
+      margin-bottom: 25px;
+    }
+    .section p {
+      max-width: 700px;
+      margin: 0 auto 40px;
+      color: #555;
+    }
+
+    .project-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+    }
+    .project-card {
+      background: #fff;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      width: 280px;
+      transition: transform 0.3s ease, background 0.3s ease;
+      cursor: default;
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      background: #fdf0fb;
+    }
+
+    .show-image-btn {
+      background: linear-gradient(135deg, #ff4eb5, #c430d7);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .show-image-btn:hover {
+      background: linear-gradient(135deg, #c430d7, #ff4eb5);
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 14px;
+      background: #fff;
+      color: #888;
+      user-select: none;
+    }
+
+    @keyframes moveAround {
+      0% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(-30px, 40px) scale(1.05); }
+      50% { transform: translate(50px, -30px) scale(0.95); }
+      75% { transform: translate(-20px, -50px) scale(1.1); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .skill-category {
+      margin-top: 50px;
+    }
+    .skill-category h3 {
+      font-size: 24px;
+      color: #ff4eb5;
+      margin-bottom: 20px;
+    }
+    .skill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+    .skill-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      width: 200px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, background 0.3s ease;
+      text-align: center;
+    }
+    .skill-card:hover {
+      transform: translateY(-8px);
+      background: #fff0fa;
+    }
+    .skill-card img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .skill-card p {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+    }
+    .skill-card span {
+      font-size: 13px;
+      color: #777;
+      display: block;
+      margin-top: 5px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-text {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <nav>
+      <div class="logo-container">
+        <h1 class="logo">Anushiya</h1>
+        <div class="logo-bubble" title="Logo Bubble">
+          <img src="./icons/logo.svg" alt="Logo inside bubble" />
+        </div>
+      </div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="mailto:anushiyadesigns@gmail.com" class="btn">Let's Talk</a>
+    </nav>
+
+    <div class="hero-content">
+      <div class="hero-avatar">
+        <img src="images/avatar.png" alt="Avatar" />
+      </div>
+      <div class="hero-text">
+        <h2>Hello! I'm <span>Anushiya</span></h2>
+        <p>I'm a UI/UX designer turning ideas into beautiful, usable digital experiences. Let’s design something magical!</p>
+        <a href="#projects" class="btn colorful">See My Work</a>
+      </div>
+    </div>
+
+    <div class="blob" aria-hidden="true"></div>
+  </header>
+
+  <section id="about" class="section about">
+    <h2> About Me</h2>
+    <p>I design clean, intuitive user interfaces with a sprinkle of creativity and strategy. I use tools like Figma, Webflow, and Adobe Suite to craft UI/UX magic.</p>
+  </section>
+
+  <section id="projects" class="section projects">
+    <h2> My Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3> Chat App</h3>
+        <p>Modern UI for seamless messaging, crafted in Figma.</p>
+        <button class="show-image-btn">Click Me</button>
+        <img src="images/Chatapp.png" alt="Chat App Screenshot" class="project-image" style="display:none; margin-top: 15px; width: 100%; border-radius: 12px;" />
+      </div>
+      <div class="project-card">
+        <h3> Bank App</h3>
+        <p>Secure, stylish design for managing finances easily.</p>
+        <button class="show-image-btn">Click Me</button>
+        <img src="images/UIUX Roadmap.png" alt="Bank App Screenshot" class="project-image" style="display:none; margin-top: 15px; width: 100%; border-radius: 12px;" />
+      </div>
+      <div class="project-card">
+        <h3> Digital Planner UI</h3>
+        <p>Fun digital product design.</p>
+        <button class="show-image-btn">Click Me</button>
+        <img src="images/Digital planner Ui.png" alt="Notebook UI Screenshot" class="project-image" style="display:none; margin-top: 15px; width: 100%; border-radius: 12px;" />
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section skills">
+    <h2> My Skills</h2>
+
+    <div class="skill-category">
+      <h3> Design Tools</h3>
+      <div class="skill-grid">
+        <div class="skill-card">
+          <img src="icons/figma.svg" alt="Figma" />
+          <p>Figma <span>UI/UX Design</span></p>
+        </div>
+        <div class="skill-card">
+          <img src="icons/xd.svg" alt="Adobe XD" />
+          <p>Adobe XD <span>Wireframes</span></p>
+        </div>
+        <div class="skill-card">
+          <img src="icons/photoshop.svg" alt="Photoshop" />
+          <p>Photoshop <span>Visual Design</span></p>
+        </div>
+        <div class="skill-card">
+          <img src="icons/illustrator.svg" alt="Illustrator" />
+          <p>Illustrator <span>Vector Graphics</span></p>
+        </div>
+        <div class="skill-card">
+          <img src="icons/webflow.svg" alt="Webflow" />
+          <p>Webflow <span>No-Code Websites</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <h3> Programming Languages</h3>
+      <div class="skill-grid">
+        <div class="skill-card">
+          <img src="icons/html.svg" alt="HTML" />
+          <p>HTML <span>Responsive Layouts</span></p>
+        </div>
+        <div class="skill-card">
+          <img src="icons/css.svg" alt="CSS" />
+          <p>CSS <span>Styles for your web pages</span></p>
+        </div>
+        <div class="skill-card">
+          <img src="icons/js.svg" alt="JavaScript" />
+          <p>JavaScript <span>Interactivity</span></p>
+        </div>
+        <div class="skill-card">
+          <img src="icons/bootstrap.svg" alt="Bootstrap" />
+          <p>Bootstrap <span>Responsive UI & Components</span></p>
+        </div>        
+        <div class="skill-card">
+          <img src="icons/python.svg" alt="Python" />
+          <p>Python <span>Logic & Automation</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact">
+    <h2> Let's Connect</h2>
+    <p>I'm open to freelance, internships, and creative collaborations. Let’s build something delightful!</p>
+    <a href="mailto:anu165shiya2003@gmail.com" class="btn">Email Me</a>
+  </section>
+
+  <footer>
+    <p>Anushiya | UI/UX Designer</p>
+  </footer>
+
+  <script>
+    // Select all buttons
+    const buttons = document.querySelectorAll('.show-image-btn');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const img = button.nextElementSibling; // next sibling is the img
+        if (img.style.display === 'none') {
+          img.style.display = 'block';
+          button.textContent = 'Hide Image';
+        } else {
+          img.style.display = 'none';
+          button.textContent = 'Click Me';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
